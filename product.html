@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -119,86 +119,176 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Free Quote</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Product</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="#">Free Quote</li>
+                    <li class="breadcrumb-item text-white active" aria-current="#">Product</li>
                 </ol>
             </nav>
         </div>
     </div>
     <!-- Page Header End -->
 
+    <!-- Product Section-->
+     <div class="container py-5">  
+        <div class="text-center mb-4">
+            <button class="btn btn-outline-primary filter-btn me-2" data-filter="all">All</button>
+            <button class="btn btn-outline-primary filter-btn me-2" data-filter="poe">POE Switches</button>
+            <button class="btn btn-outline-primary filter-btn me-2" data-filter="cctv">CCTV & NVR</button>
+            <button class="btn btn-outline-primary filter-btn me-2" data-filter="smart">Smart Home</button>
+        </div>
 
-    <!-- Quote Start -->
-    <div class="container-fluid bg-light overflow-hidden px-lg-0">
-        <div class="container quote px-lg-0">
-            <div class="row g-0 mx-lg-0">
-                <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="img/quote.jpg" style="object-fit: cover;" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-lg-5 pe-lg-0">
-                        <div class="bg-primary mb-3" style="width: 60px; height: 2px;"></div>
-                        <h1 class="display-5 mb-5">Free Quote</h1>
-                        <p class="mb-4 pb-2">Looking to enhance your property's security? Get a personalized quote for our CCTV cameras, NVR systems, and complete surveillance solutions. Whether it’s for your home, office, or industrial space, our team will assess your needs and recommend the right setup. Fill out the form and our security experts will get back to you promptly with a detailed estimate — no obligation, completely free!</p>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Select Product</option>
-                                        <option value="CCTV Camera">CCTV Camera</option>
-                                        <option value="NVR System">NVR System</option>
-                                        <option value="Combo Pack (CCTV + NVR)">Combo Pack (CCTV + NVR)</option>
-                                        <option value="Accessories (Cables, Power Supply, etc.)">Accessories (Cables, Power Supply, etc.)</option>
-                                        <option value="Custom Surveillance Kit">Custom Surveillance Kit</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Delivery Location/City" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Property Type</option>
-                                        <option value="Home">Home</option>
-                                        <option value="Office">Office</option>
-                                        <option value="Commercial">Commercial</option>
-                                        <option value="Industrial/Warehouse">Industrial/Warehouse</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="number" class="form-control border-0" placeholder="Quantity Required" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Preferred Contact Time" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Additional Notes or Custom Requirements" rows="3"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Get A Free Quote</button>
-                                </div>
-                            </div>
-                        </form>
+        <div class="row g-4">
+
+            <!-- Product 1 -->
+            <div class="col-md-4 product-item poe">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/poe-switch.jpg" class="card-img-top" alt="POE Switch">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">POE Switches</h5>
+                        <p class="card-text flex-grow-1">Reliable Power over Ethernet switches for your network connectivity needs.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
                     </div>
                 </div>
             </div>
+
+            <!-- Product 2 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/cctv-nvr.jpg" class="card-img-top" alt="CCTV & NVR">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">CCTV & NVR</h5>
+                        <p class="card-text flex-grow-1">High-definition surveillance cameras and network video recorders for enhanced security.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/poe-switch.jpg" class="card-img-top" alt="POE Switch">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">POE Switches</h5>
+                        <p class="card-text flex-grow-1">Reliable Power over Ethernet switches for your network connectivity needs.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/cctv-nvr.jpg" class="card-img-top" alt="CCTV & NVR">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">CCTV & NVR</h5>
+                        <p class="card-text flex-grow-1">High-definition surveillance cameras and network video recorders for enhanced security.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="img/products/smart-home.jpg" class="card-img-top" alt="Smart Home">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Smart Home Solutions</h5>
+                        <p class="card-text flex-grow-1">Innovative smart devices to automate and secure your home environment.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>            
+
+
         </div>
     </div>
-    <!-- Quote End -->
-        
+    <!-- Product Section end -->
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary footer py-5 wow fadeIn" data-wow-delay="0.1s">
@@ -228,45 +318,7 @@
                     <a class="btn btn-link" href="about.html">About Us</a>
                     <a class="btn btn-link" href="contact.html">Contact Us</a>
                     <a class="btn btn-link" href="product.html">Our Product</a>
-                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</button>
 
-    <!-- Terms & Conditions Modal -->
-    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h6>1. Introduction</h6>
-                    <p>By accessing and using our website and purchasing our CCTV and NVR products, you agree to be bound by these terms and conditions.</p>
-
-                    <h6>2. Product Usage</h6>
-                    <p>All products are intended for lawful surveillance and security purposes only. The misuse of our equipment for unauthorized recording is strictly prohibited.</p>
-
-                    <h6>3. Orders & Payments</h6>
-                    <p>All orders are subject to availability. Full payment must be made at the time of purchase unless otherwise agreed.</p>
-
-                    <h6>4. Delivery & Installation</h6>
-                    <p>We strive to deliver products within the estimated timeline. Installation support is provided where applicable and may incur additional charges.</p>
-
-                    <h6>5. Warranty & Support</h6>
-                    <p>All products come with a standard warranty period as mentioned on the product page. Extended warranties are available upon request.</p>
-
-                    <h6>6. Liability</h6>
-                    <p>We are not liable for any damages arising from misuse or improper installation of our products. Please follow all usage and safety instructions provided.</p>
-
-                    <h6>7. Amendments</h6>
-                    <p>We reserve the right to change these terms at any time. Continued use of our services constitutes acceptance of the revised terms.</p>
-                    <p class="mt-4"><strong>Last Updated:</strong> May 30, 2025</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-        </div>
                     <a class="btn btn-link" href="support.html">Support</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -317,6 +369,28 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                productItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Optional: update active state
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
