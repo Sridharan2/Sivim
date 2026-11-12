@@ -1,0 +1,358 @@
+.shell {
+  position: relative;
+  z-index: 80;
+}
+
+.header {
+  position: fixed;
+  z-index: 2;
+  top: var(--header-top);
+  inset-inline: 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 28px;
+  max-width: 1380px;
+  min-height: var(--header-height);
+  margin-inline: auto;
+  padding: 8px 20px;
+  background: #fafcf9;
+  border: 1px solid #ffffff80;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #081c1710;
+  transition: box-shadow 240ms ease;
+}
+
+.header[data-scrolled="true"] {
+  box-shadow: 0 8px 32px #081c1726;
+}
+
+.logo {
+  justify-self: start;
+  display: grid;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 6px;
+}
+
+.logo img {
+  width: 154px;
+  height: 61px;
+  object-fit: contain;
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 1.9vw, 28px);
+}
+
+.desktopLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+  transition: color 180ms ease;
+}
+
+.desktopLink::after,
+.panelLink > span::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 4px;
+  height: 2px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.desktopLink:hover,
+.desktopLink[aria-current] {
+  color: #267736;
+}
+
+.desktopLink:hover::after,
+.desktopLink[aria-current]::after,
+.panelLink[aria-current] > span::after {
+  transform: scaleX(1);
+}
+
+.contactButton {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding-inline: 22px;
+  border-radius: 9px;
+  background: var(--navy);
+  color: #fafcf9;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+  transition: background 180ms ease;
+}
+
+.contactButton:hover {
+  background: #244633;
+}
+
+.menuButton,
+.panel,
+.scrim {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .header {
+    inset-inline: 24px;
+    gap: 20px;
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 14px;
+  }
+
+  .desktopNav,
+  .contactButton {
+    display: none;
+  }
+
+  .logo img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .menuButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid #dce5dc;
+    border-radius: 9px;
+    background: #f0f4ef;
+    color: #183127;
+    transition:
+      background 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .menuButton:hover {
+    background: #e8efe6;
+    border-color: #bbcdbb;
+  }
+
+  .menuLabel {
+    min-width: 32px;
+    font-size: 11px;
+    font-weight: 650;
+  }
+
+  .menuIcon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+
+  .menuIcon::before,
+  .menuIcon::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 0;
+    width: 20px;
+    height: 1.5px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .menuIcon::before {
+    transform: translateY(-3px);
+  }
+
+  .menuIcon::after {
+    transform: translateY(3px);
+  }
+
+  .shell[data-open="true"] .menuIcon::before {
+    transform: rotate(45deg);
+  }
+
+  .shell[data-open="true"] .menuIcon::after {
+    transform: rotate(-45deg);
+  }
+
+  .panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    display: block;
+    width: min(100%, 390px);
+    max-height: calc(100dvh - var(--header-top) - var(--header-height) - 32px);
+    padding: 12px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    border: 1px solid #ffffff80;
+    border-radius: 14px;
+    background: #fafcf9;
+    box-shadow: 0 16px 40px #061b1926;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.985);
+    transform-origin: top right;
+    pointer-events: none;
+    transition:
+      opacity 220ms ease,
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s 280ms;
+  }
+
+  .shell[data-open="true"] .panel {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  .panel nav {
+    display: grid;
+    gap: 2px;
+  }
+
+  .panelLink {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.4px;
+    transition:
+      color 180ms ease,
+      background 180ms ease;
+  }
+
+  .panelLink > span {
+    position: relative;
+  }
+
+  .panelLink > span::after {
+    bottom: -5px;
+  }
+
+  .panelLink:hover,
+  .panelLink[aria-current] {
+    color: #267736;
+    background: #edf3eb;
+  }
+
+  .phone {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    min-height: 54px;
+    margin: 12px 14px 0;
+    padding-block: 14px 4px;
+    border-top: 1px solid #dce5dc;
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  .phone > span {
+    font-size: 11px;
+    font-weight: 500;
+    color: #5b6e60;
+  }
+
+  .scrim {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: #05181599;
+    backdrop-filter: blur(5px);
+    touch-action: none;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 240ms ease,
+      visibility 0s 280ms;
+  }
+
+  .shell[data-open="true"] .scrim {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+}
+
+@media (max-width: 520px) {
+  .header {
+    inset-inline: 12px;
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+
+  .panel {
+    width: 100%;
+    border-radius: 12px;
+  }
+}
+
+@media (max-height: 560px) {
+  .header {
+    padding-block: 6px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .panelLink {
+    min-height: 44px;
+    padding-block: 8px;
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .desktopLink,
+  .desktopLink::after,
+  .contactButton,
+  .menuButton,
+  .menuIcon::before,
+  .menuIcon::after,
+  .panel,
+  .panelLink,
+  .panelLink > span::after,
+  .scrim {
+    transition: none;
+  }
+}

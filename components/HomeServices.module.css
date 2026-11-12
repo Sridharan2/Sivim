@@ -1,0 +1,376 @@
+.section {
+  padding-block: clamp(68px, 7vw, 112px) clamp(64px, 7vw, 100px);
+  color: var(--white);
+  background: var(--navy);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+  align-items: start;
+  gap: clamp(48px, 8vw, 128px);
+}
+
+.introduction {
+  position: sticky;
+  top: calc(var(--header-top) + var(--header-height) + 36px);
+  align-self: start;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.eyebrow {
+  display: block;
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.introduction h2 {
+  margin-top: 26px;
+  font-size: clamp(36px, 3.9vw, 58px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+  color: var(--white);
+}
+
+.introduction h2 > span {
+  display: block;
+  color: var(--orange);
+}
+
+.introductionCopy {
+  max-width: 305px;
+  margin-top: 25px;
+  color: #c7d4cb;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.note {
+  max-width: 305px;
+  margin-top: 23px;
+  color: #9aafa2;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.collection {
+  min-width: 0;
+}
+
+.serviceList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  border-top: 1px solid #dae6dc26;
+}
+
+.item:last-child {
+  border-bottom: 1px solid #dae6dc26;
+}
+
+.service {
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) 12px;
+  align-items: start;
+  gap: 18px;
+  padding-block: clamp(27px, 2.5vw, 36px);
+  outline-offset: 6px;
+}
+
+.service::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  inset-inline: 0;
+  height: 1px;
+  background: #e8d5ad;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.number {
+  padding-top: 7px;
+  color: #a8bdae;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.copy {
+  min-width: 0;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.copy h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(21px, 1.85vw, 29px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  overflow-wrap: break-word;
+}
+
+.description {
+  max-width: 620px;
+  margin-top: 9px;
+  color: #e0e8e1;
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.75;
+}
+
+.hoverDot {
+  justify-self: end;
+  width: 6px;
+  height: 6px;
+  margin-top: 12px;
+  border-radius: 50%;
+  background: #f5f7ef;
+  opacity: 0;
+  transform: scale(0.3);
+  transition:
+    opacity 180ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service:is(:hover, :focus-visible)::before {
+  transform: scaleX(1);
+}
+
+.service:is(:hover, :focus-visible) .copy {
+  transform: translateX(5px);
+}
+
+.service:is(:hover, :focus-visible) .hoverDot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.action {
+  padding-top: 32px;
+}
+
+.overviewButton {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 38px;
+  min-height: 52px;
+  padding: 14px 22px;
+  border: 1px solid #e0e8e140;
+  border-radius: 4px;
+  color: #f1f5ee;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease;
+}
+
+.buttonDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  transition:
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.overviewButton:is(:hover, :focus-visible) {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: var(--navy);
+}
+
+.overviewButton:is(:hover, :focus-visible) .buttonDot {
+  background: var(--navy);
+  transform: scale(1.2);
+}
+
+@supports (animation-timeline: view()) and (animation-range: entry 0% entry 70%) {
+  @media (prefers-reduced-motion: no-preference) {
+    .item {
+      animation: service-enter 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+
+@keyframes service-enter {
+  from {
+    opacity: 0.55;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .introduction {
+    position: static;
+    max-width: none;
+  }
+
+  .introduction h2 {
+    font-size: clamp(36px, 6.5vw, 54px);
+  }
+
+  .introductionCopy,
+  .note {
+    max-width: 480px;
+  }
+
+  .note {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .layout {
+    gap: 32px;
+  }
+
+  .introduction h2 {
+    margin-top: 20px;
+    font-size: clamp(33px, 8.4vw, 44px);
+    letter-spacing: -0.045em;
+  }
+
+  .introductionCopy {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+
+  .service {
+    grid-template-columns: 18px minmax(0, 1fr) 8px;
+    gap: 12px;
+    padding-block: 22px;
+  }
+
+  .number {
+    padding-top: 5px;
+  }
+
+  .copy h3 {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .hoverDot {
+    width: 5px;
+    height: 5px;
+    margin-top: 9px;
+  }
+
+  .action {
+    padding-top: 26px;
+  }
+
+  .overviewButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .section {
+    padding-block: var(--section-space);
+  }
+
+  .layout {
+    gap: 28px;
+  }
+
+  .introduction h2 {
+    margin-top: 16px;
+  }
+
+  .introductionCopy {
+    margin-top: 16px;
+  }
+
+  .note {
+    margin-top: 12px;
+  }
+}
+
+@media (max-height: 600px) {
+  .introduction {
+    position: static;
+  }
+}
+
+@media (hover: none) {
+  .hoverDot {
+    opacity: 0.65;
+    transform: none;
+  }
+  .service:hover:not(:focus-visible) .copy {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .service::before,
+  .copy,
+  .hoverDot,
+  .overviewButton,
+  .buttonDot {
+    transition: none;
+  }
+
+  .service:is(:hover, :focus-visible) .copy,
+  .overviewButton:is(:hover, :focus-visible) .buttonDot {
+    transform: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .item {
+    border-color: CanvasText;
+  }
+
+  .service::before,
+  .hoverDot,
+  .buttonDot {
+    background: LinkText;
+  }
+
+  .overviewButton {
+    border-color: LinkText;
+    color: LinkText;
+  }
+}

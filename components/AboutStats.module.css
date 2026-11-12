@@ -1,0 +1,317 @@
+.stats {
+  padding-block: clamp(28px, 4vw, 56px) clamp(36px, 5vw, 64px);
+  background: #0b1720;
+  color: #f6f8f6;
+}
+.stats > :global(.section-wrap) {
+  max-width: 1120px;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 22px;
+}
+.heading > div {
+  display: grid;
+  gap: 6px;
+}
+.heading p {
+  color: #b9c9bf;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.caption {
+  color: #8fa69a;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.sample {
+  padding: 4px 8px;
+  border: 1px solid #ffce8438;
+  border-radius: 4px;
+  color: #dcc59e;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  padding: 0;
+  margin: 0;
+}
+.monitor {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  min-height: 200px;
+  aspect-ratio: 16 / 10;
+  overflow: clip;
+  container-type: inline-size;
+  border: 1px solid #394b53;
+  border-radius: 7px;
+  background: #061016;
+  box-shadow: 0 8px 20px #00000018;
+}
+.readout {
+  position: absolute;
+  inset: 5px;
+  overflow: clip;
+  margin: 0;
+  border-radius: 3px;
+  background: #13222a;
+}
+.footage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.55) contrast(1.08);
+  opacity: 0.88;
+}
+.readout::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      #061016b8,
+      transparent 32%,
+      transparent 42%,
+      #061016a6 65%,
+      #061016f2
+    ),
+    repeating-linear-gradient(180deg, transparent 0 2px, #0b17200d 2px 3px);
+  pointer-events: none;
+}
+.screenTop {
+  position: absolute;
+  z-index: 2;
+  inset-inline: 13px;
+  top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #f5f7f2;
+  font-family: "Courier New", monospace;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 3px #000000b3;
+}
+.recordingState {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.recordingState > i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #b3c4b9;
+}
+.recordingText,
+.pauseGlyph {
+  display: none;
+}
+.monitor[data-playing="true"] .recordingText,
+.monitor[data-playing="true"] .pauseGlyph {
+  display: inline;
+}
+.monitor[data-playing="true"] .previewText,
+.monitor[data-playing="true"] .playGlyph {
+  display: none;
+}
+.monitor[data-playing="true"] .recordingState > i {
+  background: #ff756f;
+  box-shadow: 0 0 0 2px #ff756f1a;
+}
+.number {
+  position: absolute;
+  z-index: 2;
+  left: 16px;
+  bottom: 51px;
+  color: #f6f8f6;
+  font-size: 42px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  text-shadow: 0 2px 12px #00000060;
+}
+.monitorTitle {
+  position: absolute;
+  z-index: 3;
+  left: 21px;
+  bottom: 34px;
+  max-width: calc(100% - 120px);
+  color: #ecf2ed;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.timecode,
+.cameraName {
+  position: absolute;
+  z-index: 2;
+  bottom: 12px;
+  color: #ccd9cf;
+  font-family: "Courier New", monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.07em;
+}
+.timecode {
+  right: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.cameraName {
+  left: 16px;
+  text-transform: uppercase;
+}
+.playback {
+  position: absolute;
+  z-index: 3;
+  right: 7px;
+  bottom: 37px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: #06101675;
+  color: #f6f8f6;
+  cursor: pointer;
+  visibility: hidden;
+}
+.monitor[data-interactive="true"] .playback {
+  visibility: visible;
+}
+.playback:hover {
+  border-color: #ffffff38;
+  background: #061016d9;
+}
+.playback:focus-visible {
+  outline: 2px solid #ffbf4b;
+  outline-offset: 2px;
+}
+.playback:disabled {
+  display: none;
+}
+.monitor:not([data-playing="true"]) video {
+  visibility: hidden;
+}
+@supports (font-size: 1cqi) {
+  .number {
+    font-size: clamp(24px, calc(90cqi / var(--stat-characters)), 44px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .monitor {
+    transition:
+      opacity 650ms ease var(--monitor-delay),
+      transform 750ms cubic-bezier(0.22, 1, 0.36, 1) var(--monitor-delay),
+      border-color 200ms ease;
+  }
+  .monitor[data-reveal="pending"] {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@media (hover: hover) {
+  .monitor:hover {
+    border-color: #6f8579;
+  }
+}
+@media (max-width: 800px) {
+  .stats {
+    padding-block: 24px 28px;
+  }
+  .heading {
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+  .monitor {
+    min-height: 180px;
+    aspect-ratio: 16 / 9;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .monitor {
+      transition:
+        opacity 300ms ease,
+        transform 400ms ease,
+        border-color 200ms ease;
+    }
+    .monitor[data-reveal="pending"] {
+      transform: translateY(8px);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .monitor {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+@media (forced-colors: active) {
+  .monitor {
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  .readout {
+    background: Canvas;
+  }
+  .readout::after {
+    display: none;
+  }
+  .footage {
+    display: none;
+  }
+  .sample {
+    border-color: CanvasText;
+  }
+  .heading p,
+  .caption,
+  .monitorTitle,
+  .screenTop,
+  .number,
+  .timecode,
+  .cameraName,
+  .sample {
+    color: CanvasText;
+    text-shadow: none;
+  }
+  .recordingState > i,
+  .monitor[data-playing="true"] .recordingState > i {
+    background: CanvasText;
+    box-shadow: none;
+  }
+  .playback {
+    border-color: ButtonText;
+    color: ButtonText;
+    background: ButtonFace;
+  }
+}

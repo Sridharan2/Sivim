@@ -1,0 +1,394 @@
+.hero {
+  --hero-top: calc(var(--header-top) + var(--header-height) + 24px);
+  --hero-bottom: clamp(20px, 4svh, 44px);
+  --camera-travel: clamp(24px, 8svh, 80px);
+  --background-travel: clamp(20px, 6svh, 56px);
+  --camera-bleed: clamp(0px, calc((100vw - 1300px) / 2), 160px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
+  min-height: 100svh;
+  padding-block: var(--hero-top) var(--hero-bottom);
+  color: #f6f8f6;
+  background: var(--navy);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.backdrop img {
+  position: absolute;
+  top: calc(-1 * var(--background-travel));
+  left: 0;
+  width: 100%;
+  height: calc(100% + var(--background-travel) + var(--background-travel));
+  object-fit: cover;
+  object-position: center 35%;
+  opacity: 0.22;
+  filter: saturate(0.45);
+}
+
+.backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #0b1720f0, #0b1720a6 55%, #0b172057);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  min-height: calc(100svh - var(--hero-top) - var(--hero-bottom));
+}
+
+.copy {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.copy h1 {
+  font-size: clamp(38px, min(5vw, 9svh), 76px);
+  font-weight: 650;
+  letter-spacing: -0.048em;
+  line-height: 1.1;
+}
+
+.accent {
+  color: var(--orange);
+  font-size: 0.84em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.period {
+  color: var(--green);
+}
+
+.description {
+  max-width: 450px;
+  margin-top: clamp(15px, 2.6svh, 25px);
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 500;
+  line-height: 1.75;
+  color: #eef3ee;
+}
+
+.support {
+  max-width: 410px;
+  margin-top: 9px;
+  font-size: clamp(12px, 0.95vw, 14px);
+  line-height: 1.8;
+  color: #b3c0b8;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(20px, 3.4svh, 32px);
+}
+
+.actions :global(.button) {
+  min-height: 50px;
+  padding-inline: 20px;
+  gap: 16px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.visual {
+  position: relative;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 0 calc(-1 * var(--hero-bottom));
+  pointer-events: none;
+}
+
+.camera {
+  position: absolute;
+  inset-inline-start: 50%;
+  bottom: calc(-1 * var(--camera-travel));
+  display: block;
+  /* The artwork's clear margins need room without shrinking the camera itself. */
+  width: calc((100% + var(--camera-bleed)) * 1.85);
+  height: calc(100% + var(--camera-travel));
+  max-width: none;
+  object-fit: contain;
+  object-position: center bottom;
+  translate: -50% 0;
+  user-select: none;
+}
+
+@media (max-width: 1100px) {
+  .inner {
+    gap: 25px;
+  }
+  .copy h1 {
+    font-size: clamp(36px, min(5.2vw, 8.6svh), 60px);
+  }
+  .actions {
+    gap: 10px;
+  }
+  .actions :global(.button) {
+    padding-inline: 15px;
+    gap: 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 800px) and (orientation: portrait) {
+  .hero {
+    --hero-top: calc(var(--header-top) + var(--header-height) + 20px);
+    --hero-bottom: 20px;
+    --camera-travel: 24px;
+    --background-travel: 20px;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(clamp(148px, 24svh, 220px), 1fr);
+    gap: 12px;
+  }
+  .copy h1 {
+    font-size: clamp(31px, min(8.8vw, 5.5svh), 57px);
+  }
+  .description {
+    margin-top: 13px;
+    max-width: 480px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .support {
+    max-width: 450px;
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 7px;
+  }
+  .actions {
+    margin-top: 18px;
+    gap: 10px;
+  }
+  .actions :global(.button) {
+    min-height: 46px;
+    padding-inline: 16px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    --hero-top: calc(var(--header-top) + var(--header-height) + 18px);
+    --hero-bottom: 16px;
+  }
+  .backdrop img {
+    object-position: 60% center;
+  }
+  .actions {
+    flex-wrap: nowrap;
+  }
+  .actions :global(.button) {
+    flex: 1;
+    gap: 8px;
+    padding-inline: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .actions :global(.button) {
+    font-size: 11px;
+    min-height: 44px;
+  }
+  .actions svg {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+  .inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 22px;
+  }
+  .copy h1 {
+    font-size: clamp(28px, 7.8svh, 43px);
+  }
+  .description {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .support {
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .actions {
+    margin-top: 14px;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .actions :global(.button) {
+    min-height: 44px;
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+  .actions svg {
+    display: none;
+  }
+}
+
+@media (max-height: 560px) {
+  .hero {
+    --hero-top: calc(var(--header-top) + var(--header-height) + 14px);
+    --hero-bottom: 16px;
+    --camera-travel: 24px;
+    --background-travel: 18px;
+  }
+  .description {
+    margin-top: 10px;
+    line-height: 1.6;
+    font-size: 12px;
+  }
+  .support {
+    margin-top: 6px;
+    line-height: 1.6;
+    font-size: 11px;
+  }
+  .actions {
+    margin-top: 14px;
+  }
+  .actions :global(.button) {
+    min-height: 44px;
+  }
+}
+
+@media (max-height: 430px) and (orientation: landscape) {
+  .copy h1 {
+    font-size: clamp(25px, 7.6svh, 34px);
+  }
+  .support {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) and (max-height: 650px) and (orientation: portrait) {
+  .inner {
+    gap: 8px;
+  }
+  .copy h1 {
+    font-size: clamp(29px, min(8.5vw, 5.5svh), 36px);
+  }
+  .description {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .support {
+    margin-top: 6px;
+    font-size: 11.5px;
+    line-height: 1.6;
+  }
+  .actions {
+    margin-top: 14px;
+  }
+  .actions :global(.button) {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 800px) and (max-height: 520px) and (orientation: portrait) {
+  .description {
+    display: none;
+  }
+}
+
+@media (min-width: 801px) and (min-height: 431px) and (max-height: 700px) {
+  .copy h1 {
+    font-size: clamp(36px, min(4.8vw, 8svh), 66px);
+  }
+  .description {
+    margin-top: 13px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .support {
+    margin-top: 7px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .actions {
+    margin-top: 18px;
+  }
+  .actions :global(.button) {
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero {
+    --camera-travel: 12px;
+    --background-travel: 8px;
+  }
+}
+
+/* Both layers follow the hero's exit, independently of anchor scroll padding. */
+@supports (view-timeline-name: --hero-parallax) and
+  (animation-timeline: --hero-parallax) and (animation-range: exit 0% exit 100%) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero {
+      view-timeline-name: --hero-parallax;
+      view-timeline-axis: block;
+      view-timeline-inset: 0;
+    }
+
+    .camera {
+      animation: camera-rise 1ms linear both;
+      animation-timeline: --hero-parallax;
+      animation-range: exit 0% exit 100%;
+    }
+
+    .backdrop img {
+      animation: background-lower 1ms linear both;
+      animation-timeline: --hero-parallax;
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+@keyframes camera-rise {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, calc(-1 * var(--camera-travel)), 0);
+  }
+}
+
+@keyframes background-lower {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, var(--background-travel), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    --camera-travel: 0px;
+    --background-travel: 0px;
+  }
+
+  .camera,
+  .backdrop img {
+    animation: none;
+    transform: none;
+  }
+}
